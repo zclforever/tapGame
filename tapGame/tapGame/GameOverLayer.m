@@ -56,7 +56,7 @@
         
 		CCMenuItem *gameStart = [CCMenuItemFont itemWithString:string block:^(id sender) {
 			
-            [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[PlayLayer scene] ]];
+            [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[HelloWorldLayer scene] ]];
             
 		}];
 		

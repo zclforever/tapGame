@@ -34,6 +34,7 @@
 -(bool)checkTouchWithPoint:(CGPoint)point{
     for (Box* box in self.boxArray) {
         if([box checkTouchWithPoint:point]){
+            [[SimpleAudioEngine sharedEngine] playEffect:@"shock.mp3"];
             return YES;
         }
     }

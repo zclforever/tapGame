@@ -57,17 +57,27 @@
 		
 		[CCMenuItemFont setFontSize:64];
 
-		CCMenuItem *gameStart = [CCMenuItemFont itemWithString:@"Start Game" block:^(id sender) {
+		CCMenuItem *easy = [CCMenuItemFont itemWithString:@"Easy" block:^(id sender) {
 			
-		[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[PlayLayer scene] ]];
+		[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[PlayLayer sceneWithLevel:1] ]];
 
 		}];
-		
+
+		CCMenuItem *normal = [CCMenuItemFont itemWithString:@"Normal" block:^(id sender) {
+			
+            [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[PlayLayer sceneWithLevel:2] ]];
+            
+		}];
+		CCMenuItem *hard = [CCMenuItemFont itemWithString:@"Hard" block:^(id sender) {
+			
+            [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[PlayLayer sceneWithLevel:3] ]];
+            
+		}];
 
 		
-		CCMenu *menu = [CCMenu menuWithItems:gameStart, nil];
+		CCMenu *menu = [CCMenu menuWithItems:easy,normal,hard, nil];
 		
-		[menu alignItemsHorizontallyWithPadding:20];
+		[menu alignItemsVerticallyWithPadding:20];
 		[menu setPosition:ccp( size.width/2, size.height/2 )];
 		
 		// Add the menu to the layer

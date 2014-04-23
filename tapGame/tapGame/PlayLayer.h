@@ -13,7 +13,7 @@
 @interface PlayLayer : CCLayerColor {
     
 }
-+(CCScene *) scene;
++(CCScene *) sceneWithLevel:(int)level;
 -(void)gameOver;
 -(void)addScore;
 @end

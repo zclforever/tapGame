@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "Box.h"
+#import "SimpleAudioEngine.h"
 @class PlayLayer;
 @interface LineController : NSObject {
     

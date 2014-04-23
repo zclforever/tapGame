@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "PlayLayer.h"
+#import "HelloWorldLayer.h"
 @interface GameOverLayer : CCLayer {
     
 }

@@ -11,28 +11,31 @@
 @property (strong,nonatomic) NSMutableArray* lineControllerArray;
 @property int score;
 @property bool gameIsOver;
+@property float topSpeed;
 @end
 
 @implementation PlayLayer
-+(CCScene *) scene
++(CCScene *) sceneWithLevel:(int)level
 {
 	CCScene *scene = [CCScene node];
 	
-	PlayLayer *layer = [PlayLayer node];
+	PlayLayer *layer = [[PlayLayer alloc]initWithLevel:level];
 	
 	[scene addChild: layer];
 	
 	return scene;
 }
 
--(id)init{
+-(id)initWithLevel:(int)level{
     self=[super initWithColor:ccc4(255, 255, 200, 80)];
     self.lineControllerArray=[[NSMutableArray alloc]init];
     self.touchEnabled=YES;
+    self.topSpeed=level*80;
     return self;
 }
 -(void)onEnterTransitionDidFinish{
-    float topSpeed=240+arc4random()%60;
+    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"background.caf"];
+    float topSpeed=40+self.topSpeed+arc4random()%30;
     LineController* lineController;
     lineController=[[LineController alloc]initWithOwner:self withColumn:0 withMoveSpeed:topSpeed-40];
     [self.lineControllerArray addObject:lineController];
@@ -44,6 +47,7 @@
     [self.lineControllerArray addObject:lineController];
     
     [self schedule:@selector(update:)];
+
 }
 -(void)update:(ccTime)delta{
     for (LineController* lineController in self.lineControllerArray) {
